@@ -1,2 +1,3 @@
 #!/usr/bin/python3
-print("%s" % "".join([f"{i:c}" for i in range(97, 123)]), end="")
+for x in range(ord("a"), ord("z") + 1):
+    print("{}".format(chr(x)), end="")
