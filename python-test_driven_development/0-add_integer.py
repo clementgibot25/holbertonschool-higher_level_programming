@@ -20,4 +20,11 @@ def add_integer(a, b=98):
         raise TypeError("a must be an integer")
     if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
+    
+    # Gestion explicite des valeurs infinies
+    if isinstance(a, float) and (a == float('inf') or a == float('-inf')):
+        raise OverflowError("float overflow")
+    if isinstance(b, float) and (b == float('inf') or b == float('-inf')):
+        raise OverflowError("float overflow")
+    
     return int(a) + int(b)
