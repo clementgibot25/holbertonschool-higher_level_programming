@@ -4,6 +4,7 @@
 matrix_divided module
 """
 
+
 def matrix_divided(matrix, div):
     """
     Divides all elements of a matrix by a given number.
@@ -22,7 +23,7 @@ def matrix_divided(matrix, div):
             isinstance(x, (int, float)) for x in row
         ) for row in matrix
     ):
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+        raise TypeError("matrix must be a matrix of integers/floats")
 
     if len(matrix) > 0:
         size = len(matrix[0])
