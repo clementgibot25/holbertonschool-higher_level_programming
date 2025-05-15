@@ -2,7 +2,7 @@
 """
 add_integer module
 """
-def add_integer(a, b):
+def add_integer(a, b=98):
     """
     Adds two integers and returns the result.
     
