@@ -26,4 +26,4 @@ def text_indentation(text):
             print()  # Ajoute un saut de ligne
             line = ""  # Réinitialise la ligne
     if line.strip():  # Si il reste du texte à la fin
-        print(line.strip())  # Imprime sans saut de ligne
+        print(line.strip(), end="")  # Imprime sans saut de ligne
