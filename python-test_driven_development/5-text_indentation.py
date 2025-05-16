@@ -17,15 +17,13 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    seps = ".?:"
-    line = ""
+    seps = ".?:"  # Séparateurs
+    line = ""  # Stocke le texte courant
     for c in text:
-        line += c
-        if c in seps:
-            print(line.strip())
-            print()
-            line = ""
-            continue
-    if line.strip():
-        print(line.strip())
-
+        line += c  # Ajoute le caractère au texte courant
+        if c in seps:  # Si c'est un séparateur
+            print(line.strip())  # Imprime avec un seul saut de ligne
+            print()  # Ajoute un saut de ligne
+            line = ""  # Réinitialise la ligne
+    if line.strip():  # Si il reste du texte à la fin
+        print(line.strip())  # Imprime sans saut de ligne
