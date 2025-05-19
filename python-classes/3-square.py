@@ -6,7 +6,8 @@ Module for Square class with size validation and area calculation.
 
 class Square:
     """
-    Defines a square with a private size attribute, validation, and area calculation.
+    Defines a square with a private size attribute, validation,
+    and area calculation.
 
     Attributes:
         __size (int): The size of the square (private).
