@@ -19,11 +19,14 @@ class Square:
 
         Args:
             size (int, optional): The size of the square. Defaults to 0.
-            position (tuple, optional): The position of the square. Defaults to (0, 0).
+            position (tuple, optional): The position of the square.
+                Defaults to (0, 0).
 
         Raises:
-            TypeError: If size is not an integer or position is not a tuple of 2 positive integers.
-            ValueError: If size is less than 0 or position contains non-positive integers.
+            TypeError: If size is not an integer or position is not a
+                tuple of 2 positive integers.
+            ValueError: If size is less than 0 or position contains
+                non-positive integers.
         """
         self.size = size  # Use the setter for validation
         self.position = position  # Use the setter for validation
@@ -80,7 +83,8 @@ class Square:
         if (not isinstance(value, tuple) or len(value) != 2 or
                 not all(isinstance(num, int) for num in value) or
                 not all(num >= 0 for num in value)):
-            raise TypeError("position must be a tuple of 2 positive integers")
+            raise TypeError("position must be a tuple "
+                            "of 2 positive integers")
         self.__position = value
 
     def area(self):
@@ -100,11 +104,11 @@ class Square:
         if self.__size == 0:
             print()
             return
-            
+
         # Print vertical position (newlines before the square)
         for _ in range(self.__position[1]):
             print()
-            
+
         # Print each line of the square with horizontal position
         for _ in range(self.__size):
             print(" " * self.__position[0] + "#" * self.__size)
