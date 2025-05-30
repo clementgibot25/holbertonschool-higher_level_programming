@@ -31,7 +31,7 @@ def shape_info(shape):
     print(f"Area: {shape.area()}")
     print(f"Perimeter: {shape.perimeter()}")
 
-rect = Rectangle(3, 4)
+rect = Rectangle(4, 7)
 circle = Circle(5)
 
 shape_info(rect)
