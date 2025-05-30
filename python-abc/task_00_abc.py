@@ -9,7 +9,11 @@ class Animal(ABC):
 
 class Dog(Animal):
     def sound(self):
-        return "Woof!"
+        return "Bark"
+
+class Cat(Animal):
+    def sound(self):
+        return "Meow"
 
 dog = Dog()
 print(dog.sound())
