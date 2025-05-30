@@ -24,12 +24,4 @@ class Square(BaseGeometry):
         '''
         self.integer_validator("size", size)
         self.__size = size
-
-    def area(self):
-        '''
-        Calculate the area of the square.
-
-        Returns:
-            int: The area of the square (size * size).
-        '''
-        return self.__size * self.__size
+        super().__init__(size, size)
