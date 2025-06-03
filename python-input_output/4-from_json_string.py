@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 
 """
-Module that returns an object (Python data structure) represented by a JSON string
+Module that returns an object (Python data structure) represented
+by a JSON string
 """
+
 
 import json
 
