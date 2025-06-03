@@ -4,6 +4,7 @@
 Module that defines a class Student
 """
 
+
 class Student:
     """Class that defines a student"""
     def __init__(self, first_name, last_name, age):
@@ -13,8 +14,10 @@ class Student:
         self.age = age
 
     def to_json(self):
-        """Returns the dictionary description with simple data structure
-        (list, dictionary, string, integer and boolean) for JSON serialization of the object
+        """Returns the dictionary description with
+        simple data structure
+        (list, dictionary, string, integer and boolean)
+        for JSON serialization of the object
 
         args:
             self: Object to be serialized
