@@ -6,9 +6,10 @@ Module reads file and prints it to stdout
 
 
 def read_file(filename=""):
-    with open(filename, "r") as f:
-        print(f.read(), end="")
+    """reads a text file(UTF8) and prints it to stdout
 
-
-if __name__ == "__main__":
-    read_file("0-read_file.py")
+    args:
+        filename: Name of the file read
+    """
+    with open(filename, "r", encoding="utf-8") as newfile:
+        print(newfile.read(), end="")
