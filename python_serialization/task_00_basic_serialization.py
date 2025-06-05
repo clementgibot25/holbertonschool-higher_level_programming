@@ -1,5 +1,11 @@
 #!/usr/bin/python3
 
+"""
+Module that defines a function to serialize a Python dictionary to a JSON file
+and a function to load and deserialize a JSON file to a Python dictionary.
+"""
+
+
 import json
 
 def serialize_and_save_to_file(data, filename):
