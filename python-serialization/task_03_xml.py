@@ -1,75 +1,58 @@
 #!/usr/bin/python3
 """
-This module provides functions to serialize and deserialize Python
-dictionaries to and from XML files.
+Module for serializing and deserializing Python dictionaries to/from XML.
 """
+
 import xml.etree.ElementTree as ET
 
 
 def serialize_to_xml(dictionary, filename):
     """
-    Serializes a Python dictionary into XML and saves it to the given filename.
+    Serialize a Python dictionary to an XML file.
 
     Args:
-        dictionary (dict): The dictionary to serialize.
-        filename (str): The name of the file to save the XML data to.
-
-    Returns:
-        bool: True if serialization was successful, False otherwise.
+        dictionary (dict): The dictionary to serialize
+        filename (str): The name of the file to save the XML to
     """
     try:
         root = ET.Element('data')
+
         for key, value in dictionary.items():
-            # Ensure key is string for tag
-            child = ET.SubElement(root, str(key))
-            # Ensure value is string for text
+            child = ET.SubElement(root, key)
             child.text = str(value)
 
         tree = ET.ElementTree(root)
+        ET.indent(tree, '    ')
         tree.write(filename, encoding='utf-8', xml_declaration=True)
-        return True
-    except Exception:
-        return False
+
+    except Exception as e:
+        print(f"Error during XML serialization: {e}")
+        raise
 
 
 def deserialize_from_xml(filename):
     """
-    Reads XML data from a file and returns a deserialized Python dictionary.
+    Deserialize an XML file to a Python dictionary.
 
     Args:
-        filename (str): The name of the file to read XML data from.
+        filename (str): The name of the XML file to read from
 
     Returns:
-        dict or None: The deserialized dictionary, or None if an error occurs.
+        dict: The deserialized dictionary
     """
     try:
         tree = ET.parse(filename)
         root = tree.getroot()
-
-        data_dict = {}
+        result = {}
         for child in root:
-            key = child.tag
-            value_str = child.text
-
-            # Attempt type conversion
-            if value_str is None:
-                data_dict[key] = None
-            elif value_str.lower() == 'true':
-                data_dict[key] = True
-            elif value_str.lower() == 'false':
-                data_dict[key] = False
-            else:
-                try:
-                    data_dict[key] = int(value_str)
-                except ValueError:
-                    try:
-                        data_dict[key] = float(value_str)
-                    except ValueError:
-                        # Keep as string if no other type matches
-                        data_dict[key] = value_str
-
-        return data_dict
-    except (FileNotFoundError, ET.ParseError):
-        return None
-    except Exception:
-        return None
+            result[child.tag] = child.text
+        return result
+    except ET.ParseError as e:
+        print(f"Error parsing XML: {e}")
+        raise
+    except FileNotFoundError:
+        print(f"File not found: {filename}")
+        raise
+    except Exception as e:
+        print(f"Error during XML deserialization: {e}")
+        raise
