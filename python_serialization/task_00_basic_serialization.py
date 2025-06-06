@@ -1,23 +1,31 @@
 #!/usr/bin/python3
-import json
+"""
+Basic serialization module that converts between Python dictionaries and JSON files.
+"""
 
 def serialize_and_save_to_file(data, filename):
     """
-    Serializes a Python dictionary and saves it to a JSON file.
-    If the file exists, it will be replaced.
+    Serialize a Python dictionary to a JSON file.
 
-    :param data: Dictionary to serialize
-    :param filename: Name of the JSON file
+    Args:
+        data: A Python Dictionary with data to be serialized
+        filename: The filename of the output JSON file
     """
-    with open(filename, 'w', encoding="utf-8") as file:
-        json.dump(data, file, indent=4)
+    import json
+    with open(filename, 'w') as f:
+        json.dump(data, f)
+
 
 def load_and_deserialize(filename):
     """
-    Loads a JSON file and deserializes it into a Python dictionary.
+    Load and deserialize data from a JSON file to a Python dictionary.
 
-    :param filename: Name of the JSON file to read
-    :return: Dictionary with deserialized data
+    Args:
+        filename: The filename of the input JSON file
+
+    Returns:
+        dict: A Python Dictionary with the deserialized JSON data
     """
-    with open(filename, 'r', encoding="utf-8") as file:
-        return json.load(file)
+    import json
+    with open(filename, 'r') as f:
+        return json.load(f)
