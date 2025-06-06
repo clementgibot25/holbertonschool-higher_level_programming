@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-
 """
-This module provides functions to serialize and deserialize Python dictionaries to and from XML files.
+This module provides functions to serialize and deserialize Python
+dictionaries to and from XML files.
 """
-
-
 import xml.etree.ElementTree as ET
+
 
 def serialize_to_xml(dictionary, filename):
     """
@@ -14,21 +13,24 @@ def serialize_to_xml(dictionary, filename):
     Args:
         dictionary (dict): The dictionary to serialize.
         filename (str): The name of the file to save the XML data to.
-    
+
     Returns:
         bool: True if serialization was successful, False otherwise.
     """
     try:
         root = ET.Element('data')
         for key, value in dictionary.items():
-            child = ET.SubElement(root, str(key)) # Ensure key is string for tag
-            child.text = str(value) # Ensure value is string for text
-        
+            # Ensure key is string for tag
+            child = ET.SubElement(root, str(key))
+            # Ensure value is string for text
+            child.text = str(value)
+
         tree = ET.ElementTree(root)
         tree.write(filename, encoding='utf-8', xml_declaration=True)
         return True
     except Exception:
         return False
+
 
 def deserialize_from_xml(filename):
     """
@@ -43,12 +45,12 @@ def deserialize_from_xml(filename):
     try:
         tree = ET.parse(filename)
         root = tree.getroot()
-        
+
         data_dict = {}
         for child in root:
             key = child.tag
             value_str = child.text
-            
+
             # Attempt type conversion
             if value_str is None:
                 data_dict[key] = None
@@ -63,8 +65,9 @@ def deserialize_from_xml(filename):
                     try:
                         data_dict[key] = float(value_str)
                     except ValueError:
-                        data_dict[key] = value_str # Keep as string if no other type matches
-                        
+                        # Keep as string if no other type matches
+                        data_dict[key] = value_str
+
         return data_dict
     except (FileNotFoundError, ET.ParseError):
         return None
