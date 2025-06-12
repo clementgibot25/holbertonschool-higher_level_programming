@@ -11,8 +11,8 @@ def home():
 
 @app.route("/data")
 def data():
-    # Returns a list of all usernames
-    return jsonify({"usernames": list(users.keys())})
+    user = list(users)
+    return jsonify(user)
 
 @app.post("/add_user")
 def add():
