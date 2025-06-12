@@ -7,7 +7,7 @@ users = {}
 
 @app.route("/")
 def home():
-    return "<p>Welcome to the Flask API!</p>"
+    return jsonify({"message": "Welcome to the Flask API!"})
 
 @app.route("/data")
 def data():
@@ -17,7 +17,7 @@ def data():
 @app.route("/status")
 def status():
     # Simple status endpoint
-    return jsonify({"status": "OK"})
+    return "OK"
 
 @app.route("/users/<username>")
 def get_user(username):
@@ -36,9 +36,6 @@ def add_user():
     username = request.json.get("username")
     if not username:
         return jsonify({"error": "Username is required"}), 400
-        
-    if username in users:
-        return jsonify({"error": "User already exists"}), 400
     
     # Extract user details from the request
     user_data = {
@@ -47,11 +44,15 @@ def add_user():
         "city": request.json.get("city")
     }
     
+    # Check if user already exists
+    if username in users:
+        return jsonify({"error": "User already exists"}), 400
+        
     # Add the new user to the dictionary
     users[username] = user_data
     
     # Return confirmation with the added user's data
-    return jsonify({"message": "User added successfully", "user": user_data}), 201
+    return jsonify({"message": "User added successfully"}), 201
 
 if __name__ == "__main__":
     app.run(debug=False)
