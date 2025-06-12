@@ -23,12 +23,12 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
         if self.path == "/status":
             # Handle /status endpoint
             self.send_response(200)
-            self.send_header('Content-type', 'application/json')
+            self.send_header('Content-type', 'plain/text')
             self.end_headers()
 
             # Send JSON response
-            status_message = {"status": "OK"}
-            self.wfile.write(json.dumps(status_message).encode('utf-8'))
+            status_message = "OK"
+            self.wfile.write(status_message.encode('utf-8'))
             return
 
         elif self.path == "/data":
