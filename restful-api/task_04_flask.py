@@ -3,11 +3,7 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 # Global users dictionary to store user data
-users = {
-    "jane": {"name": "Jane", "age": 28, "city": "Los Angeles"},
-    "john": {"name": "John", "age": 32, "city": "New York"},
-    "alice": {"name": "Alice", "age": 25, "city": "Chicago"}
-}
+users = {}
 
 @app.route("/")
 def home():
