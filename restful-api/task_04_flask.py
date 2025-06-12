@@ -27,7 +27,10 @@ def status():
 def get_user(username):
     # Dynamic route to get user details by username
     if username in users:
-        return jsonify(users[username])
+        # Create a response that includes the username and all user details
+        response = {"username": username}
+        response.update(users[username])  # Add all user details to the response
+        return jsonify(response)
     else:
         return jsonify({"error": "User not found"}), 404
 
