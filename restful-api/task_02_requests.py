@@ -1,9 +1,3 @@
-#!/usr/bin/python3
-
-"""
-Python script to fetch posts from JSONPlaceholder API
-"""
-
 
 import requests
 import csv
