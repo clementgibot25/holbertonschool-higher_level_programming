@@ -23,11 +23,12 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
         if self.path == "/status":
             # Handle /status endpoint
             self.send_response(200)
-            self.send_header('Content-type', 'text/plain')
+            self.send_header('Content-type', 'application/json')
             self.end_headers()
 
-            # Send text response
-            self.wfile.write("OK".encode('utf-8'))
+            # Send JSON response
+            status_message = {"status": "OK"}
+            self.wfile.write(json.dumps(status_message).encode('utf-8'))
             return
 
         elif self.path == "/info":
@@ -73,11 +74,12 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
         else:
             # Handle undefined endpoints with 404 error
             self.send_response(404)
-            self.send_header('Content-type', 'text/plain')
+            self.send_header('Content-type', 'application/json')
             self.end_headers()
 
             # Error message
-            self.wfile.write("status: 404 Not Found", "message: Endpoint not found".encode('utf-8'))
+            error = {"error": "404 Not Found", "message": "Endpoint not found"}
+            self.wfile.write(json.dumps(error).encode('utf-8'))
             return
 
 
