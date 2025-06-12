@@ -31,22 +31,6 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(json.dumps(status_message).encode('utf-8'))
             return
 
-        elif self.path == "/info":
-            # Handle /info endpoint
-            self.send_response(200)
-            self.send_header('Content-type', 'application/json')
-            self.end_headers()
-
-            # Sample JSON data
-            datas = {
-                "version": "1.0",
-                "description": "A simple API built with http.server"
-            }
-
-            # Send JSON response
-            self.wfile.write(json.dumps(datas).encode('utf-8'))
-            return
-
         elif self.path == "/data":
             # Handle /data endpoint
             self.send_response(200)
