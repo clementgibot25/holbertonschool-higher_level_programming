@@ -7,7 +7,7 @@ users = {}
 
 @app.route("/")
 def home():
-    return jsonify({"message": "Welcome to the Flask API!"})
+    return jsonify({"message": "Hello, this is a simple API!"})
 
 @app.route("/data")
 def data():
@@ -52,7 +52,7 @@ def add_user():
     users[username] = user_data
     
     # Return confirmation with the added user's data
-    return jsonify({"message": "User added successfully"}), 201
+    return jsonify({"message": "User added successfully", "user": user_data}), 201
 
 if __name__ == "__main__":
     app.run(debug=False)
