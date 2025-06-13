@@ -60,13 +60,13 @@ def login():
 @auth.login_required
 def basic_protected():
     """A route protected by HTTP Basic Auth."""
-    return jsonify("Basic Auth: Access Granted")
+    return jsonify(message="Basic Auth: Access Granted")
 
 @app.route('/jwt-protected')
 @jwt_required()
 def jwt_protected():
     """A route protected by JWT."""
-    return jsonify("JWT Auth: Access Granted")
+    return jsonify(message="JWT Auth: Access Granted")
 
 
 def admin_required(fn):
@@ -85,7 +85,7 @@ def admin_required(fn):
 @admin_required
 def admin_only():
     """An admin-only route protected by JWT with role check."""
-    return jsonify("Admin Access: Granted")
+    return jsonify(message="Admin Access: Granted")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
