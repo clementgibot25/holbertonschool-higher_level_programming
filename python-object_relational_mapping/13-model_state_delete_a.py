@@ -33,14 +33,14 @@ if __name__ == "__main__":
     try:
         # Find all states with name containing 'a' (case-insensitive)
         states = session.query(State).filter(State.name.like('%a%')).all()
-        
+
         # Delete each matching state
         for state in states:
             session.delete(state)
-        
+
         # Commit the transaction
         session.commit()
-        
+
     except Exception as e:
         print("Error:", e)
         session.rollback()
