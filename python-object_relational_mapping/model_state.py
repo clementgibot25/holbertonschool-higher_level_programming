@@ -10,12 +10,13 @@ import sys
 # Create the base class
 Base = declarative_base()
 
+
 class State(Base):
     """
     State class that links to the MySQL table 'states'
     """
     __tablename__ = 'states'
-    
+
     id = Column(
         Integer,
         primary_key=True,
@@ -28,11 +29,13 @@ class State(Base):
         nullable=False
     )
 
+
 # The following code is for testing purposes only
 if __name__ == "__main__":
     # Create an engine to connect to the MySQL server
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
-    .format(sys.argv[1], sys.argv[2], sys.argv[3]))
-    
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
+        sys.argv[1], sys.argv[2], sys.argv[3]
+    ))
+
     # Create all tables in the engine
     Base.metadata.create_all(engine)
