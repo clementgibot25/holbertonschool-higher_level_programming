@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flask App</title>
+</head>
+<body>
+{% include 'header.html' %}
+
+<main style="padding: 20px;">
+    <h1>Welcome to My Flask App</h1>
+    <p>This is a simple Flask application with template inheritance and shared components.</p>
+    <p>Use the navigation menu above to explore different sections of our website.</p>
+    <ul>
+        <li>Flask</li>
+        <li>HTML</li>
+        <li>Templates</li>
+    </ul>
+</main>
+{% include 'footer.html' %}
+</body>
+</html>
